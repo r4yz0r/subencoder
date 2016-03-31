@@ -1,3 +1,16 @@
+/** ************************************************************************* *
+ *                                                                            *
+ * Shellcode SUB Encoder                                                      *
+ *                                                                            *
+ * This code is based on:                                                     *
+ * https://github.com/Partyschaum/haxe/blob/master/printable_helper.c         *
+ *                                                                            *
+ * Compile:                                                                   *
+ * gcc -g3 -fno-stack-protector -z execstack -o subencoder subencoder.c       *
+ * by r4yz0r                                                                  *
+ *                                                                            *
+ * ************************************************************************** */
+
 #define _GNU_SOURCE
 
 #include <string.h>
@@ -11,19 +24,6 @@
 
 #define ZERO_OUT_EAX "\\x25\\x4A\\x4D\\x4E\\x55\\x25\\x35\\x32\\x31\\x2A"
 #define PUSH_EAX "\\x50"
-
-/** ************************************************************************* *
- *                                                                            *
- * Shellcode SUB Encoder                                                      *
- *                                                                            *
- * This code is based on:                                                     *
- * https://github.com/Partyschaum/haxe/blob/master/printable_helper.c         *
- *                                                                            *
- * Compile:                                                                   *
- * gcc -g3 -fno-stack-protector -z execstack -o subencoder subencoder.c       *
- * by r4yz0r                                                                  *
- *                                                                            *
- * ************************************************************************** */
 
 /*
  * Function prototypes
@@ -83,7 +83,7 @@ int main(int argc, char* argv[])
 
     /* ******************************* *
      * Read in Allowed Chars from file *
-     * ********Ü********************** */
+     * ******************************* */
     fpAllowedChars = fopen(argv[2],"r");
 
     if(fpAllowedChars == NULL)
@@ -103,11 +103,10 @@ int main(int argc, char* argv[])
     if( 1!=fread( allowedchars , lSizeAllowedChars, 1 , fpAllowedChars) )
         fclose(fpAllowedChars),free(allowedchars),fputs("entire read fails",stderr),exit(1);
 
-    printf("Original Shellcode:\n%s\n\n", shellcode);
-
+    printf("Shellcode:\n%s\n\n", shellcode);
+    
     //reverse(shellcode);
-
-    printf("Reversed Shellcode:\n%s\n\n", shellcode);
+    //printf("Reversed Shellcode:\n%s\n\n", shellcode);
 
     printf("Allowed_chars file:\n%s\n", allowedchars);
 
