@@ -3,7 +3,7 @@ subencoder - shellcode obfuscater
 
 Calc.exe Shellcode:
 
-"\x33\xc0" 			         => XOR EAX,EAX | Zero out EAX register 
+"\x33\xc0"               => XOR EAX,EAX | Zero out EAX register 
 "\x50" 				           => PUSH EAX | Push EAX to have null-byte padding for "calc.exe" 
 "\x68\x2E\x65\x78\x65"   => PUSH ".exe" 
 "\x68\x63\x61\x6C\x63"   => PUSH "calc" 
